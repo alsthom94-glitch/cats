@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f2eee7">
+<title>when did social media become my parents</title>
+<style>
+  :root { --paper:#f2eee7; --ink:#171715; --cat-opacity:0; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; background:var(--paper); }
+  body { position:relative; margin:0; background:var(--paper); color:var(--ink); font-family:Georgia,"Times New Roman",serif; }
+  .topbar { position:fixed; inset:0 0 auto; height:3px; z-index:20; background:#17171512; }
+  .topbar span { display:block; height:100%; width:0; background:#a15b39; }
+  .masthead { position:fixed; top:22px; left:5vw; right:5vw; z-index:10; display:flex; justify-content:space-between; gap:1rem; font:10px/1.4 Arial,sans-serif; text-transform:uppercase; letter-spacing:.16em; mix-blend-mode:difference; color:white; pointer-events:none; }
+  .story { position:relative; z-index:1; width:min(600px, 34vw); margin:0 auto; padding:18vh 0 22vh; }
+  .page-title { min-height:48vh; display:flex; align-items:flex-end; padding-bottom:8vh; }
+  .page-title h1 { font-size:clamp(2.6rem,7vw,5.8rem); line-height:.98; font-weight:400; letter-spacing:-.065em; margin:0; }
+  .intro { min-height:48vh; display:flex; flex-direction:column; justify-content:flex-end; padding-bottom:8vh; }
+  .eyebrow { font:10px/1.5 Arial,sans-serif; letter-spacing:.22em; text-transform:uppercase; color:#a15b39; margin:0 0 1.5rem; }
+  h1 { font-size:clamp(2.6rem,7vw,5.8rem); line-height:.98; font-weight:400; letter-spacing:-.065em; margin:0; max-width:700px; }
+  .intro-note { font:11px/1.5 Arial,sans-serif; letter-spacing:.12em; text-transform:uppercase; margin-top:2rem; opacity:.55; }
+  .copy { font-size:clamp(1.15rem,2.15vw,1.55rem); line-height:1.85; }
+  .copy p { margin:0 0 1.65em; }
+  .copy em { font-style:italic; }
+  .copy strong { font-family:Arial,sans-serif; font-size:.82em; letter-spacing:.09em; cursor:pointer; position:relative; z-index:2; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:4px; }
+  .copy strong:focus-visible { outline:2px solid #a15b39; outline-offset:4px; }
+  .trigger-word { position:relative; }
+  .ending { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:12vh 8vw; }
+  .ending p { max-width:760px; font-size:clamp(2rem,5vw,4rem); line-height:1.2; letter-spacing:-.04em; }
+  .ending .last { font-size:clamp(2.4rem,6vw,5rem); }
+  .cat-layer { position:absolute; inset:0; z-index:100; overflow:visible; pointer-events:none; opacity:var(--cat-opacity); transition:opacity .15s linear; }
+  .cat-word { position:absolute; z-index:101; display:block; white-space:nowrap; color:#e85b0b; opacity:1 !important; line-height:.8; font-weight:400; user-select:none; transform-origin:center; text-shadow:0 0 0 transparent; }
+  .loop-note { position:fixed; z-index:111; left:0; right:0; top:calc(50% + 3.7rem); text-align:center; font:10px/1.5 Arial,sans-serif; letter-spacing:.14em; text-transform:uppercase; opacity:0; pointer-events:none; }
+  .loop-note.visible { opacity:.7; }
+  .reset-screen { position:fixed; z-index:29; inset:0; background:var(--paper); opacity:0; visibility:hidden; transition:opacity .4s; }
+  .reset-screen.visible { opacity:1; visibility:visible; }
+  .after-refresh { position:fixed; z-index:112; bottom:24px; left:0; right:0; text-align:center; font:11px/1.6 Arial,sans-serif; opacity:0; pointer-events:none; }
+  .after-refresh.visible { opacity:1; pointer-events:auto; }
+  .after-refresh a { color:inherit; text-decoration-thickness:1px; text-underline-offset:4px; pointer-events:auto; }
+  body.looped .story { filter:blur(2px); opacity:.18; }
+  body.looped .cat-layer { opacity:1 !important; }
+  body.looped .refresh { top:50%; }
+  @media(max-width:600px) {
+    .masthead { top:15px; font-size:8px; letter-spacing:.1em; }
+    .story { width:36vw; padding-top:17vh; }
+    .copy { line-height:1.75; }
+  }
+  @media(prefers-reduced-motion:reduce) {
+    html { scroll-behavior:auto; }
+    *,*::before,*::after { transition-duration:.01ms !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="topbar"><span id="progress"></span></div>
+  <div class="cat-layer" id="catLayer" aria-hidden="true"></div>
+
+  <main class="story" id="story">
+    <header class="page-title">
+      <h1>when did social media become my parents</h1>
+    </header>
+    <article class="copy" id="copy">
+      <p>When you were a kid, did you ever say you liked something, to your parents, just once? And they decided to turn it into your whole identity. You’d get themed presents for the next five years. And every time they saw it, in a shop, or on TV, they’d point it out to you. It becomes the very essence of your personality to them. <em>Oh yes, he really loves Shreddies. He just can’t get enough of them. He’s always talking about Shreddies this and Shreddies that. We reckon he’s probably going to work for Kellog’s, when he grows up!</em></p>
+
+      <p>Well, mine was <span class="trigger-word" id="firstCat">cats</span>. I told my parents that I wanted a ginger cat, hoping that they’d get me one. We always had pets in the house. So, naturally, my parents, and everyone they’d told, got me books on cats. But not; <em>‘How to Raise a Cat’</em> or; <em>‘Cat Care for Beginners’</em>. No. These books were just filled with pictures of cats or encyclopaedias about all the different breeds of cats. I got socks with cats on, ornaments of cats, cats this, cats that, but no actual cat. I could see it, a secondary school boy on his first day and for the next five years, I’d be known as the cat kid. It was awful, a CATastrophe, if you will.</p>
+
+      <p>So, sometimes you just need to <strong>REFRESH</strong><br>and Start over.</p>
+
+      <p>But it’s too late. The seeds are sown. I swear the house cats even started looking at me weird. As if they were saying ‘such a weird kid, why is he so obsessed with us. I feel so uncomfortable around him anymore. Pervert’.</p>
+
+      <p>So, you reinvent yourself and pick a new <a href="#new-hobby" id="hobbyLink" style="color:inherit;text-decoration-thickness:1px;text-underline-offset:4px">hobby</a>.</p>
+
+      <p>But it just happens all over again. Probably minus the accusation of perversion by domesticated cats. So, you keep your hobbies to yourself now. You scroll through socials and one video appears on your feed. One totally unrelated video and within minutes it’s cats all over again.</p>
+
+      <p class="last-question">When did social media become my parents?</p>
+    </article>
+
+  </main>
+
+  <div class="reset-screen" id="resetScreen" aria-hidden="true"></div>
+
+<script>
+(() => {
+  const layer = document.getElementById('catLayer');
+  const firstCat = document.getElementById('firstCat');
+  const progressBar = document.getElementById('progress');
+  const resetScreen = document.getElementById('resetScreen');
+  const refreshText = document.querySelector('.copy strong');
+  const hobbyLink = document.getElementById('hobbyLink');
+  const fonts = [
+    'Georgia, serif', 'Arial, sans-serif', '"Times New Roman", serif',
+    'Impact, sans-serif', '"Courier New", monospace', 'Palatino, serif',
+    'Verdana, sans-serif', 'Garamond, serif', 'Trebuchet MS, sans-serif'
+  ];
+  const words = [];
+  let started = false;
+  let looped = false;
+  let invasion = 0;
+  let raf = 0;
+  let lastCount = 0;
+
+  // Distribute the words across the full document, then reveal them progressively.
+  // They are absolutely positioned in document coordinates, so they scroll with the poem.
+  const TOTAL_WORDS = 420;
+  let layoutHeight = 0;
+  let layoutStart = 0;
+
+  function makeWord(i, startY, availableHeight, refreshZone) {
+    const el = document.createElement('span');
+    el.className = 'cat-word';
+    el.textContent = 'cats';
+    const size = 20 + ((i * 47) % 145);
+    const rotation = ((i * 29) % 71) - 35;
+    el.style.fontFamily = fonts[i % fonts.length];
+    el.style.fontSize = size + 'px';
+    el.style.transform = `translate(-50%,-50%) rotate(${rotation}deg)`;
+    el.style.left = '0px';
+    el.style.top = '0px';
+    el.style.visibility = 'hidden';
+    // Measure the real rotated word footprint so the 3px gap is measured from
+    // the visible letters, rather than guessed from font size.
+    layer.appendChild(el);
+    const footprint = el.getBoundingClientRect();
+    const halfW = footprint.width / 2 + 3;
+    const halfH = footprint.height / 2 + 3;
+    let x = 0, y = 0;
+    for (let attempt = 0; attempt < 100; attempt++) {
+      const n = i + attempt * 137;
+      x = ((n * 0.61803398875) + 0.137) % 1;
+      y = ((n * 0.75487766625) + 0.293) % 1;
+      const px = x * document.documentElement.clientWidth;
+      const py = startY + y * availableHeight;
+      const overlapsRefresh = refreshZone &&
+        px + halfW > refreshZone.left && px - halfW < refreshZone.right &&
+        py + halfH > refreshZone.top && py - halfH < refreshZone.bottom;
+      if (!overlapsRefresh) break;
+    }
+    el.style.left = (x * 100) + '%';
+    el.style.top = (startY + y * availableHeight) + 'px';
+    el.style.visibility = 'visible';
+    el.style.opacity = '1';
+    el.style.display = 'none';
+    words.push(el);
+  }
+
+  function rebuildWordField() {
+    const trigger = document.getElementById('firstCat');
+    const triggerTop = trigger.getBoundingClientRect().top + window.scrollY;
+    const documentHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+    layoutStart = Math.max(0, triggerTop - window.innerHeight * .35);
+    layoutHeight = Math.max(window.innerHeight, documentHeight - layoutStart);
+
+    // Reserve just a few pixels around the in-poem REFRESH word.
+    const refreshText = document.querySelector('.copy strong');
+    const r = refreshText.getBoundingClientRect();
+    const pad = 3;
+    const refreshZone = {
+      left: r.left + window.scrollX - pad,
+      right: r.right + window.scrollX + pad,
+      top: r.top + window.scrollY - pad,
+      bottom: r.bottom + window.scrollY + pad
+    };
+
+    layer.replaceChildren();
+    words.length = 0;
+    for (let i = 0; i < TOTAL_WORDS; i++) makeWord(i, layoutStart, layoutHeight, refreshZone);
+  }
+
+  rebuildWordField();
+  window.addEventListener('load', rebuildWordField, { once: true });
+  window.addEventListener('resize', rebuildWordField);
+
+  function update() {
+    raf = 0;
+    const maxScroll = document.documentElement.scrollHeight - innerHeight;
+    const scrollProgress = maxScroll > 0 ? scrollY / maxScroll : 0;
+    progressBar.style.width = (scrollProgress * 100) + '%';
+
+    const triggerRect = firstCat.getBoundingClientRect();
+    const triggerReached = triggerRect.top <= innerHeight * .55;
+    if (triggerReached) started = true;
+
+    if (!started || looped) {
+      document.documentElement.style.setProperty('--cat-opacity', looped ? '1' : '0');
+      return;
+    }
+
+    const remaining = Math.max(0, document.documentElement.scrollHeight - (scrollY + innerHeight));
+    const distanceAfterTrigger = Math.max(0, innerHeight * .55 - triggerRect.top);
+    invasion = Math.min(1, distanceAfterTrigger / (innerHeight * 3.1));
+    document.documentElement.style.setProperty('--cat-opacity', String(invasion > 0 ? 1 : 0));
+
+    // Reveal words in waves across the whole document. Their layer sits above the prose.
+    words.forEach((word, i) => {
+      const revealAt = i / TOTAL_WORDS;
+      word.style.display = revealAt <= invasion ? 'block' : 'none';
+    });
+
+  }
+
+  function onScroll() {
+    if (!raf) raf = requestAnimationFrame(update);
+  }
+  addEventListener('scroll', onScroll, { passive:true });
+  addEventListener('resize', () => { rebuildWordField(); onScroll(); });
+  update();
+
+  // The REFRESH word in the original poem is the only refresh control.
+  refreshText.setAttribute('role', 'button');
+  refreshText.setAttribute('tabindex', '0');
+  refreshText.setAttribute('aria-label', 'Refresh and open the next page');
+  function resetToTop() {
+    window.location.href = 'index-second-page.html';
+  }
+  refreshText.addEventListener('click', resetToTop);
+  refreshText.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      resetToTop();
+    }
+  });
+
+  hobbyLink.addEventListener('click', event => {
+    event.preventDefault();
+    startNewHobby();
+  });
+
+  function startNewHobby() {
+    // Keep the user's original wording unchanged and restart the existing visual cycle.
+    looped = false;
+    started = false;
+    invasion = 0;
+    resetScreen.classList.remove('visible');
+    document.documentElement.style.setProperty('--cat-opacity', '0');
+    words.forEach(word => { word.textContent = 'cats'; });
+    firstCat.textContent = 'cats';
+    document.body.classList.remove('looped');
+    window.scrollTo({ top:0, behavior:'smooth' });
+    update();
+  }
+})();
+</script>
+</body>
+</html>
